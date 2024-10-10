@@ -94,7 +94,7 @@ To get started with the project, follow these steps:
 
 - **`NEXT_PUBLIC_API_KEY`**: Google Books API key for fetching book details.
 
-### **Screenshots**
+### **Pages**
 
 1. **Home Page:**  
    The main page of the application where users can search for books.
