@@ -105,6 +105,11 @@ To get started with the project, follow these steps:
 3. **Book Details Page:**  
    Shows detailed information about a selected book.
 
+## Demo:
+
+Click on the link below to preview a demo:
+[![Watch the Video:](https://youtu.be/j0C5BGCHbWg)]
+
 ### **Contact**
 
 For any queries or issues, please reach out to:

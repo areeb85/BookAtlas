@@ -9,14 +9,31 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import '../globals.css';
 
 const Navbar = ({ onSearch }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSearch, setShowSearch] = useState(false); // New state to control search visibility on small screens
+  
   const pathName = usePathname();
 
-  const itemsMenu = []
+    // Toggle search bar visibility on small screens
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
+  // Responsive Search Button (shown on small screens)
+  const smallScreenSearchButton = (
+    <Button
+      icon="pi pi-search"
+      className="p-button-rounded p-button-text"
+      onClick={toggleSearch}
+      style={{ color: '#000' }}
+      aria-label="Open Search"
+    />
+  );
 
+  const itemsMenu = []
   if (pathName !== '/') { // Only show the 'Home' button if not on the home page
     itemsMenu.push({
       label: 'Home',
@@ -48,14 +65,16 @@ const Navbar = ({ onSearch }) => {
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && onSearch(searchQuery)}
         placeholder="Search..."
+        className='hide-on-small-screen'
       />
       <Button icon="pi pi-search" 
-      onClick={(e) => 
-        onSearch(searchQuery)} 
-        style={{ color: '#000' }} 
+        onClick={(e) => onSearch(searchQuery)} 
+        style={{ color: '#000' }}
         />
     </div>
   );
+
+
 
 
   return (

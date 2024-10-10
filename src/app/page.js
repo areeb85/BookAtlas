@@ -134,30 +134,6 @@ const App = () => {
           <ProgressSpinner />
         </div>
       ) : books.length === 0 ? (
-        // <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', fontSize: '1.5rem' }}>
-        //   <span style={{ fontWeight: 'normal' }}>Start searching</span>
-        // </div>
-    
-        // <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', fontSize: '1.5rem', flexDirection: 'column' }}>
-        //   <svg
-        //     width="50"
-        //     height="50"
-        //     viewBox="0 0 24 24"
-        //     fill="none"
-        //     xmlns="http://www.w3.org/2000/svg"
-        //     style={{ marginBottom: '10px' }}
-        //   >
-        //     <path
-        //       d="M21 21L15.803 15.803M17 10.5C17 14.6421 13.6421 18 9.5 18C5.35786 18 2 14.6421 2 10.5C2 6.35786 5.35786 3 9.5 3C13.6421 3 17 6.35786 17 10.5Z"
-        //       stroke="currentColor"
-        //       strokeWidth="2"
-        //       strokeLinecap="round"
-        //       strokeLinejoin="round"
-        //     />
-        //   </svg>
-        //   <span style={{ fontWeight: 'normal' }}>Start searching using the search bar above</span>
-        // </div>
-
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection: 'column' }}>
           {/* PrimeReact Search Icon */}
           <i className="pi pi-search search-icon bounce" style={{ fontSize: '4rem', color: '#6366F1' }}></i>
