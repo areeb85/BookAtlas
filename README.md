@@ -62,20 +62,23 @@ To get started with the project, follow these steps:
 
 ### **Folder Structure**
 
-src/  
-├── app/  
-│ ├── components/ # Reusable components like Navbar, BooksGrid, etc.  
-│ ├── BookDetails/  
-│ │ └── [id]/  
-│ │ └── page.js # Book Details Page for each book  
-│ └── books/  
-│ └── page.js # Main Books table Page  
-├── public/  
-│ └── assets/ # Placeholder images and static assets  
-├── styles/  
-│ └── globals.css # Global styles for the application  
-├── .env.local # API keys for Google Books API  
-└── README.md
+```bash
+    src/
+    ├── app/
+    │   ├── components/              # Reusable components like Navbar, BooksGrid, etc.
+    │   ├── BookDetails/
+    │   │   └── [id]/
+    │   │       └── page.js          # Book Details Page for each book
+    │   └── books/
+    │       └── page.js              # Main Books table Page
+    ├── public/
+    │   └── assets/                  # Placeholder images and static assets
+    ├── styles/
+    │   └── globals.css              # Global styles for the application
+    ├── .env.local                   # API keys for Google Books API
+    └── README.md
+
+```
 
 ### **How to Run the Project**
 
