@@ -1,6 +1,6 @@
 ## Book Atlas
 
-BookAtlas is a Next-JS and React based book search and management application that allows users to search for books using the Google Books API, view detailed information about each book, and navigate smoothly between pages without losing the current state. Pagination has been implemented as well which means the data is loaded in batches so as to maintain the User Experience. The application implements client-side caching and a responsive UI/UX design to provide a seamless user experience.
+BookAtlas is a Next-JS and React based book search and management application that allows users to search for books using the Google Books API, view detailed information about each book, and navigate smoothly between pages without losing the current state. Pagination has been implemented as well which means the data is loaded in batches so as to maintain the User Experience. The application implements client-side caching and a responsive UI/UX design to provide a seamless user experience. Scroll all the way down to preview how the app looks like (youtube link)
 
 ### **Features**
 
