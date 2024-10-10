@@ -24,15 +24,21 @@ To get started with the project, follow these steps:
 
 1. **Clone the Repository:**
 
-   git clone <repository-url>
+   ```bash
+      git clone <repository-url>
+   ```
 
 2. **Navigate to the Project Directory:**
 
+   ```bash
    cd bookatlas
+   ```
 
 3. **Install Required Dependencies:**
 
+   ```bash
    npm install
+   ```
 
    **Dependencies:**
 
@@ -69,7 +75,7 @@ src/
 ├── styles/  
 │ └── globals.css # Global styles for the application  
 ├── .env.local # API keys for Google Books API  
-└── README.md # Project documentation
+└── README.md
 
 ### **How to Run the Project**
 
