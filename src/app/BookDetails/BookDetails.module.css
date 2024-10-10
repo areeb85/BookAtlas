@@ -1,0 +1,127 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  /* Book Details Grid */
+  .bookDetails {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two columns: 1 for cover image, 2 for details */
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Cover Image Column */
+  .coverColumn {
+    border-right: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .coverImage {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 1rem;
+  }
+  
+  /* Info Column */
+  .infoColumn {
+    padding: 2rem;
+  }
+  
+  /* Book Info Styling */
+  .bookTitle { /* Changed from `h1` to `.bookTitle` */
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .bookAuthor { /* Changed from `h3` to `.bookAuthor` */
+    margin-top: 0.5rem;
+    color: #555;
+  }
+  
+  .bookDescription {
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Back Button */
+  .backButton {
+    background-color: #0070f3;
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #005bb5;
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 768px) {
+    .bookDetails {
+      grid-template-columns: 1fr; /* Switch to single column for smaller screens */
+    }
+  
+    .coverColumn {
+      border-right: none;
+      border-bottom: 1px solid #eee; /* Separate the cover and details */
+      padding-bottom: 1rem;
+    }
+  
+    .coverImage {
+      max-width: 150px; /* Smaller image on mobile */
+    }
+  
+    .infoColumn {
+      padding: 1rem; /* Adjust padding */
+    }
+  
+    .bookTitle {
+      font-size: 1.5rem; /* Adjust font size */
+    }
+  
+    .bookAuthor {
+      font-size: 1.2rem;
+    }
+  
+    .backButton {
+      width: 100%;
+      padding: 0.75rem;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .bookDetails {
+      padding: 0.5rem; /* Reduce padding on very small screens */
+    }
+  
+    .bookTitle {
+      font-size: 1.3rem;
+    }
+  
+    .bookAuthor {
+      font-size: 1rem;
+    }
+  
+    .backButton {
+      font-size: 0.9rem;
+    }
+  }
+  
