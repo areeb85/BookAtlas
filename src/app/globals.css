@@ -99,3 +99,21 @@ src/app/globals.css
     opacity: 1;
   }
 }
+
+/* CSS for bouncing animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Apply the animation to the PrimeReact icon */
+.bounce {
+  animation: bounce 2s infinite;
+}
