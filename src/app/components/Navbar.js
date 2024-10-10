@@ -47,22 +47,17 @@ const Navbar = ({ onSearch }) => {
       <InputText
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && onSearch(searchQuery)}
         placeholder="Search..."
       />
-      <Button icon="pi pi-search" onClick={(e) => onSearch(searchQuery)} style={{ color: '#000' }}/>
+      <Button icon="pi pi-search" 
+      onClick={(e) => 
+        onSearch(searchQuery)} 
+        style={{ color: '#000' }} 
+        />
     </div>
   );
 
-//   if (onSearch === undefined) {
-//     return (
-//       <div 
-//           style={{ paddingLeft: '2rem', margin: '0', marginRight : "2rem" }}
-//           className='animate-fade-in'
-//       >
-//         <Menubar start={start}/>
-//       </div>
-//     );
-//   }
 
   return (
     <div 
