@@ -105,10 +105,13 @@ To get started with the project, follow these steps:
 3. **Book Details Page:**  
    Shows detailed information about a selected book.
 
-## Demo:
+## Demo Video
 
-Click on the link below to preview a demo:
-[![Watch the Video:](https://youtu.be/j0C5BGCHbWg)]
+Watch the full demonstration of the BookAtlas app in the video below:
+
+[![Watch the video](https://img.youtube.com/vi/j0C5BGCHbWg/0.jpg)](https://youtu.be/j0C5BGCHbWg)
+
+In this video, you will see how to search, view, and manage books seamlessly in the BookAtlas application.
 
 ### **Contact**
 
