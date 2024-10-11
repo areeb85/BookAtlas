@@ -97,10 +97,10 @@ To get started with the project, follow these steps:
 ### **Pages**
 
 1. **Home Page:**  
-   The main page of the application where users can search for books.
+   The main page of the application where users can search for books in the navbar.
 
 2. **Books Grid:**  
-   Displays the books in a grid layout with pagination.
+   Displays the books in a tabular layout with pagination on the home page.
 
 3. **Book Details Page:**  
    Shows detailed information about a selected book.
@@ -109,7 +109,7 @@ To get started with the project, follow these steps:
 
 Watch the full demonstration of the BookAtlas app in the video below:
 
-[![Watch the video](https://img.youtube.com/vi/j0C5BGCHbWg/5.jpg)](https://youtu.be/j0C5BGCHbWg)
+[![Watch the video](https://img.youtube.com/vi/j0C5BGCHbWg/0.jpg)](https://youtu.be/j0C5BGCHbWg)
 
 In this video, you will see how to search, view, and manage books seamlessly in the BookAtlas application.
 
