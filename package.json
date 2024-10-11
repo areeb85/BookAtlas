@@ -16,6 +16,7 @@
     "primereact": "^10.8.4",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind": "^4.0.0"
+    "tailwind": "^4.0.0",
+    "vercel": "^37.7.1"
   }
 }

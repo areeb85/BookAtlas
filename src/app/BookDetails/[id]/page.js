@@ -1,14 +1,25 @@
-'use client';
+'use client'; // Directive to indicate that this component should be rendered on the client-side
+
 
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from '../BookDetails.module.css';
 import Navbar from '@/app/components/Navbar';
 
+
+/**
+ * BookDetails component renders detailed information about a selected book.
+ * It extracts the `book` details from the URL query parameter, decodes it, and displays it in a formatted layout.
+ */
 const BookDetails = () => {
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); // Hook to retrieve URL query parameters
   const [book, setBook] = useState(null);
 
+
+  /**
+   * Effect to parse and set the book details from the `book` query parameter.
+   * It runs whenever `searchParams` changes, which typically occurs during navigation or URL updates.
+   */
   useEffect(() => {
     const encodedBook = searchParams.get('book'); // Retrieve the `book` query parameter
     if (encodedBook) {
@@ -38,7 +49,6 @@ const BookDetails = () => {
           />
         </div>
         <div className={styles.infoColumn}>
-          {/* Apply the new class names */}
           <h1 className={styles.bookTitle}>{book.volumeInfo.title}</h1>
           <h3 className={styles.bookAuthor}>By: {book.volumeInfo.authors?.join(', ')}</h3>
           <p className={styles.bookDescription}><strong>Publisher:</strong> {book.volumeInfo.publisher}</p>

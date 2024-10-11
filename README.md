@@ -109,7 +109,7 @@ To get started with the project, follow these steps:
 
 Watch the full demonstration of the BookAtlas app in the video below:
 
-[![Watch the video](https://img.youtube.com/vi/j0C5BGCHbWg/0.jpg)](https://youtu.be/j0C5BGCHbWg)
+[![Watch the video](https://img.youtube.com/vi/j0C5BGCHbWg/5.jpg)](https://youtu.be/j0C5BGCHbWg)
 
 In this video, you will see how to search, view, and manage books seamlessly in the BookAtlas application.
 

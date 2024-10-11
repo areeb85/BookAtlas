@@ -1,27 +1,31 @@
-"use client";
+"use client"; // Directive indicating that this component should be rendered on the client-side
 
 import Navbar from "./components/Navbar";
-
 import BooksGrid from "./books/page";
 import { ProgressSpinner } from 'primereact/progressspinner';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useState, useEffect } from "react";
 import axios, { all } from "axios";
-import { InputText } from "primereact/inputtext";
 
 
-
+/**
+ * Main App component that manages the book search functionality, caching, and pagination.
+ * It uses state and effect hooks to handle asynchronous data fetching and caching, while the `Navbar`
+ * component is used for handling the search input.
+ */
 const App = () => {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [totalRecords, setTotalRecords] = useState(0);
-  const [currentQuery, setCurrentQuery] = useState('');
-  const [allRecordsFetched, setAllRecordsFetched] = useState(false);
-  const [first, setFirst] = useState(0);
-  const [rows, setRows] = useState(5);
-  const [pagesCache, setPagesCache] = useState({});
+  // State variables to manage various aspects of the app
+  const [books, setBooks] = useState([]); // Stores the list of books returned by the API
+  const [loading, setLoading] = useState(false); // Tracks whether the API call is in progress
+  const [totalRecords, setTotalRecords] = useState(0); // Stores the total number of books matching the search query
+  const [currentQuery, setCurrentQuery] = useState(''); // Stores the current search query
+  const [allRecordsFetched, setAllRecordsFetched] = useState(false); // Boolean to track if all books are fetched
+  const [first, setFirst] = useState(0); // Tracks the current index for pagination
+  const [rows, setRows] = useState(5); // Number of rows to display per page
+  const [pagesCache, setPagesCache] = useState({}); // Caches book data for each page to minimize API calls
 
-
+  /**
+   * Effect hook to load cached data from local storage when the component mounts
+   */
   useEffect(() => {
     const cachedBooks = localStorage.getItem('books');
     const cachedQuery = localStorage.getItem('currentQuery');
@@ -38,7 +42,9 @@ const App = () => {
     }
   }, []);
 
-  // 2. Save to cache whenever books, pagesCache, or currentQuery changes
+  /**
+   * Effect hook to save data to local storage whenever books, pagesCache, or currentQuery changes
+   */
   useEffect(() => {
     if (books.length > 0) {
       localStorage.setItem('books', JSON.stringify(books));
@@ -49,7 +55,11 @@ const App = () => {
   }, [books, currentQuery, pagesCache, totalRecords]);
 
   
-
+  /**
+   * Handles fetching search results when a new search query is entered.
+   * Resets the state and triggers a new API call based on the search query.
+   * @param {string} searchQuery - The search query entered by the user.
+   */
   const handleSearchResults = async (searchQuery) => {
     if (searchQuery !== currentQuery) {
       setPagesCache({});
@@ -83,6 +93,11 @@ const App = () => {
   };
 
 
+  /**
+   * Handles page change events for the BooksGrid component.
+   * Fetches books for the requested page and updates the state accordingly.
+   * @param {Object} event - Event object containing `first` and `rows` for pagination.
+   */
   const handlePageChange = async (event) => {
     const { first, rows } = event; // Get pagination parameters from the event
     
@@ -117,6 +132,14 @@ const App = () => {
   };
 
 
+
+  /**
+   * Makes an API call to Google Books API to fetch books based on query and pagination.
+   * @param {string} query - Search query string
+   * @param {number} startIndex - Index to start fetching from
+   * @param {number} rows - Number of results to fetch per page
+   * @returns {Object} - API response data
+   */
   const fetchBooks = async (query, startIndex, rows) => {
     const response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}&startIndex=${startIndex}&maxResults=${rows}&key=${process.env.NEXT_PUBLIC_API_KEY}`
@@ -135,7 +158,6 @@ const App = () => {
         </div>
       ) : books.length === 0 ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection: 'column' }}>
-          {/* PrimeReact Search Icon */}
           <i className="pi pi-search search-icon bounce" style={{ fontSize: '4rem', color: '#6366F1' }}></i>
           <span style={{ marginTop: '1rem', fontWeight: 'normal' }}>Start searching using the search bar above</span>
         </div>
