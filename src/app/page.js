@@ -1,7 +1,7 @@
 "use client"; // Directive indicating that this component should be rendered on the client-side
 
-import Navbar from "./components/Navbar";
-import BooksGrid from "./books/page";
+import Navbar from "./components/Navbar/page";
+import BooksGrid from "./Books/page";
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { useState, useEffect } from "react";
 import axios, { all } from "axios";
@@ -18,7 +18,6 @@ const App = () => {
   const [loading, setLoading] = useState(false); // Tracks whether the API call is in progress
   const [totalRecords, setTotalRecords] = useState(0); // Stores the total number of books matching the search query
   const [currentQuery, setCurrentQuery] = useState(''); // Stores the current search query
-  const [allRecordsFetched, setAllRecordsFetched] = useState(false); // Boolean to track if all books are fetched
   const [first, setFirst] = useState(0); // Tracks the current index for pagination
   const [rows, setRows] = useState(5); // Number of rows to display per page
   const [pagesCache, setPagesCache] = useState({}); // Caches book data for each page to minimize API calls
@@ -34,7 +33,7 @@ const App = () => {
 
     // Restore cached data if available
     if (cachedBooks && cachedQuery && cachedPagesCache && cachedTotalRecords) {
-      console.log("Cache", cachedPagesCache);
+      // console.log("Cache", cachedPagesCache);
       setBooks(JSON.parse(cachedBooks));
       setCurrentQuery(cachedQuery);
       setPagesCache(JSON.parse(cachedPagesCache));
@@ -67,7 +66,6 @@ const App = () => {
 
     setBooks([]); // Clear any previous search results
     setLoading(true); // Show spinner before the API call starts
-    setAllRecordsFetched(false); // Reset the state for new search
     setCurrentQuery(searchQuery); // Save the current search query
     setFirst(0);
 
@@ -76,15 +74,9 @@ const App = () => {
       const response = await fetchBooks(searchQuery, 0, rows);
       setBooks(response.items || []);
       setTotalRecords(response.totalItems || 0);
-
-      setPagesCache((prevCache) => 
-        ({ ...prevCache, 0: response.items || [] 
-      }));
-
-      if (response.items && response.items.length >= response.totalItems) {
-        setAllRecordsFetched(true); // Set the flag when all records are fetched
-      }
-
+      setPagesCache({0 : response.items || []});
+      console.log("Cache: ", pagesCache);
+      
     } catch (error) {
       console.error("Error fetching books:", error);
     } finally {
@@ -114,11 +106,8 @@ const App = () => {
     try {
       // Use the stored `currentQuery` for subsequent page changes
       const response = await fetchBooks(currentQuery, first, rows);
-      console.log("Response for Pagination:", response);
-
       const newBooks = response.items || []
       setBooks(newBooks); // Update the books state with the new page's data
-
       setPagesCache((prevCache) => ({
         ...prevCache,
         [first] : newBooks,
@@ -144,7 +133,6 @@ const App = () => {
     const response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}&startIndex=${startIndex}&maxResults=${rows}&key=${process.env.NEXT_PUBLIC_API_KEY}`
     );
-    console.log("response, ", response.data);
     return response.data;
   };
 

@@ -31,7 +31,8 @@ src/app/globals.css
     background: none;
     border: none;
     cursor: pointer; /* Make buttons and links consistent */
-  }
+  } 
+
 
 
   /* for the data table */
@@ -118,4 +119,21 @@ src/app/globals.css
   animation: bounce 2s infinite;
 }
 
+
+.p-button {
+  background-color: var(--primary-color, #28a745); /* Or the color you want */
+  color: white; /* Ensure button text is white */
+  border: none; /* Keep PrimeReact's button styling */
+  padding: 0.75rem 1.25rem; /* Restore padding */
+  font-size: 1rem;
+  cursor: pointer; /* Ensure the pointer is visible */
+}
+
+.p-button:enabled:hover {
+  background-color: #218838; /* Hover color for enabled buttons */
+}
+
+.p-button-success {
+  background-color: #28a745;
+}
 

@@ -1,7 +1,7 @@
 "use client"; // Directive indicating that this component should be rendered on the client-side
 
 import { useRouter, usePathname } from 'next/navigation'; 
-import { useState } from 'react'; 
+import { useEffect, useState } from 'react'; 
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button'; 
 import { Menubar } from 'primereact/menubar'; 
@@ -9,7 +9,9 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css'; 
 import 'primeicons/primeicons.css'; 
 import 'primeflex/primeflex.css'; 
-import '../globals.css'; 
+import '../../globals.css'; 
+import { useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 
 
 
@@ -23,10 +25,14 @@ const Navbar = ({ onSearch }) => {
   const router = useRouter(); // Hook for navigation actions
   const [searchQuery, setSearchQuery] = useState(''); // State for storing the current search query
 
+  const {data: session, status} = useSession(); // Get the current session
   const pathName = usePathname(); // Get the current pathname of the route
 
   // Define an array to hold menu items
-  const itemsMenu = [];
+  var itemsMenu = [];
+
+ 
+
   // Conditionally add 'Home' button to the menu if not on the home page
   if (pathName !== '/') { 
     itemsMenu.push({
@@ -34,6 +40,31 @@ const Navbar = ({ onSearch }) => {
       icon: 'pi pi-home', 
       command: () => router.push('/'), // Command to navigate to the home page
     });
+  }
+  if (status === 'authenticated') {
+    itemsMenu.push(
+    {
+      label: 'Favorites',
+      icon: 'pi pi-heart',
+      command: () => router.push('../../Favourites')
+    },
+    {
+      label: 'Sign out',
+      icon: 'pi pi-sign-out',
+      command: () => handleSignOut()
+    }
+    )
+  } else if (status == "unauthenticated") {
+    itemsMenu.push({
+      label: 'Sign in',
+      icon: 'pi pi-sign-in',
+      command: () => router.push('../../api/auth/signIn'),
+    });
+  }
+
+  const handleSignOut = () => {
+    window.localStorage.removeItem("favoriteBooksCache");
+    signOut({ callbackUrl: '/' });
   }
 
   // Define the left section of the menu, which acts as a clickable title
@@ -52,7 +83,7 @@ const Navbar = ({ onSearch }) => {
   );
 
   // Define the right section of the menu, which contains the search input and button
-  const end = (
+  var end = (
     <div 
       className="p-inputgroup" 
     >
@@ -69,6 +100,10 @@ const Navbar = ({ onSearch }) => {
       />
     </div>
   );
+
+  if (pathName == "/Favourites") {
+    end = null;
+  }
 
   return (
     <div 
