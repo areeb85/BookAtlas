@@ -1,7 +1,7 @@
 "use client"; // Directive indicating that this component should be rendered on the client-side
 
 import Navbar from "./components/Navbar";
-import BooksGrid from "./books/page";
+import BooksGrid from "./Books/page";
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { useState, useEffect } from "react";
 import axios, { all } from "axios";
@@ -34,7 +34,7 @@ const App = () => {
 
     // Restore cached data if available
     if (cachedBooks && cachedQuery && cachedPagesCache && cachedTotalRecords) {
-      console.log("Cache", cachedPagesCache);
+      // console.log("Cache", cachedPagesCache);
       setBooks(JSON.parse(cachedBooks));
       setCurrentQuery(cachedQuery);
       setPagesCache(JSON.parse(cachedPagesCache));
